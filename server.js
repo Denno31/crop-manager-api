@@ -15,14 +15,18 @@ const employeeRoutes = require("./routes/employee");
 const transactionRoutes = require("./routes/transactionRoute");
 const attendanceRoutes = require("./routes/attendanceRoutes");
 const itemRoutes = require("./routes/itemRoute");
-const ports = require('./vessel-ports.json')
-const vessels = require('./vessels.json')
-const portsWithCoordinates = require('./ports.json')
-const fs = require("fs")
-const portswithOldIds = require('./portsOldIds.json')
-const portsWithNewIds = require('./portsWithNewIds.json')
-const portsWithOldAndNewIds = require('./portWithNewAndOldIds.json');
-const { portsWithNewIdsData, portsWithNewAndOldIdsData, updatedVesselsData } = require("./processData.js");
+const ports = require("./vessel-ports.json");
+const vessels = require("./vessels.json");
+const portsWithCoordinates = require("./ports.json");
+const fs = require("fs");
+const portswithOldIds = require("./portsOldIds.json");
+const portsWithNewIds = require("./portsWithNewIds.json");
+const portsWithOldAndNewIds = require("./portWithNewAndOldIds.json");
+const {
+  portsWithNewIdsData,
+  portsWithNewAndOldIdsData,
+  updatedVesselsData,
+} = require("./processData.js");
 
 const app = express();
 dotenv.config();
@@ -57,10 +61,10 @@ app.use("/api/attendance", attendanceRoutes);
 app.use("/api/items", itemRoutes);
 
 // serve static files
-app.use(express.static("frontend/build"));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-});
+// app.use(express.static("frontend/build"));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+// });
 app.use((err, req, res, next) => {
   console.log(err.message);
   res.status(500).send({ message: err.message });

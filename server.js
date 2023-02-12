@@ -46,6 +46,10 @@ const PORT = process.env.PORT || 5000;
 //   res.send("server is working");
 // });
 
+app.get("/", (req, res) => {
+  res.send("working");
+});
+
 app.use("/api/user", userRoutes);
 app.use("/api/crop", cropRoutes);
 app.use("/api/field", fieldRoutes);

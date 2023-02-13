@@ -22,6 +22,7 @@ const fs = require("fs");
 const portswithOldIds = require("./portsOldIds.json");
 const portsWithNewIds = require("./portsWithNewIds.json");
 const portsWithOldAndNewIds = require("./portWithNewAndOldIds.json");
+const cors = require("cors");
 const {
   portsWithNewIdsData,
   portsWithNewAndOldIdsData,
@@ -45,6 +46,8 @@ const PORT = process.env.PORT || 5000;
 // app.get("/", (req, res) => {
 //   res.send("server is working");
 // });
+
+app.use(cors({ origin: ["https://shiny-clafoutis-6dfe16.netlify.app"] }));
 
 app.get("/", (req, res) => {
   res.send("working");

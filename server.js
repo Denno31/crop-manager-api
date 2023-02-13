@@ -47,7 +47,11 @@ const PORT = process.env.PORT || 5000;
 //   res.send("server is working");
 // });
 
-app.use(cors({ origin: ["https://shiny-clafoutis-6dfe16.netlify.app"] }));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("working");
